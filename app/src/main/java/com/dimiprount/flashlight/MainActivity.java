@@ -33,7 +33,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 		bSwitch_On.setOnClickListener(this);
 		bSwitch_Off.setOnClickListener(this);
 
-		sp = new SoundPool(1, AudioManager.STREAM_MUSIC, 0); // For short clips
+		sp = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
 
 		sound = sp.load(this, R.raw.sound_on_off, 1);
 
@@ -41,7 +41,6 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
@@ -65,7 +64,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 
 	//  Stop the camera pushing the back button
 	@Override
-	public void onBackPressed() { // If not, camera will close a few seconds after pushing the back button
+	public void onBackPressed() {
 		closeApp();
 	}
 
