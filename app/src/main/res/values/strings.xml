@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Flashlight</string>
+    <string name="bSwitch_On">On</string>
+    <string name="bSwitch_Off">Off</string>
+
+</resources>
