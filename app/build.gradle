@@ -3,10 +3,7 @@ apply plugin: 'com.android.application'
 android {
     signingConfigs {
         flashlight {
-            keyAlias 'flashlight'
-            keyPassword 'oDpe-1726'
-            storeFile file('/home/dimprount/AndroidStudioProjects/Myapks/flashlight.jks')
-            storePassword 'oDpe-1726'
+            
         }
     }
     compileSdkVersion 23
