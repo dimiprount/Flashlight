@@ -33,7 +33,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 		bSwitch_On.setOnClickListener(this);
 		bSwitch_Off.setOnClickListener(this);
 
-		sp = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
+		sp = new SoundPool(1, AudioManager.STREAM_MUSIC, 0); // For short clips
 
 		sound = sp.load(this, R.raw.sound_on_off, 1);
 
@@ -41,6 +41,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
@@ -64,7 +65,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 
 	//  Stop the camera pushing the back button
 	@Override
-	public void onBackPressed() {
+	public void onBackPressed() { // If not, camera will close a few seconds after pushing the back button
 		closeApp();
 	}
 
@@ -81,42 +82,42 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 		// TODO Auto-generated method stub
 
 		switch (arg0.getId()) {
-		case R.id.bswitchon:
+			case R.id.bswitchon:
 
-			if (cam == null || params == null) {
-				try {
-					cam = Camera.open();
-					params = cam.getParameters();
-					params.setFlashMode(Parameters.FLASH_MODE_TORCH);
-					cam.setParameters(params);
-					cam.startPreview();
-					if (sound != 0)
-						sp.play(sound, 1, 1, 0, 0, 1);
+				if (cam == null || params == null) {
+					try {
+						cam = Camera.open();
+						params = cam.getParameters();
+						params.setFlashMode(Parameters.FLASH_MODE_TORCH);
+						cam.setParameters(params);
+						cam.startPreview();
+						if (sound != 0)
+							sp.play(sound, 1, 1, 0, 0, 1);
 
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
-			}
-			break;
+				break;
 
-		case R.id.bswitchoff:
-			if (cam != null && params != null) {
-				try {
-					params = cam.getParameters();
-					params.setFlashMode(Parameters.FLASH_MODE_OFF);
-					cam.setParameters(params);
-					cam.stopPreview();
-					cam.release();
-					cam = null;
-					if (sound != 0)
-						sp.play(sound, 1, 1, 0, 0, 1);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+			case R.id.bswitchoff:
+				if (cam != null && params != null) {
+					try {
+						params = cam.getParameters();
+						params.setFlashMode(Parameters.FLASH_MODE_OFF);
+						cam.setParameters(params);
+						cam.stopPreview();
+						cam.release();
+						cam = null;
+						if (sound != 0)
+							sp.play(sound, 1, 1, 0, 0, 1);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
-			}
-			break;
+				break;
 		}
 
 	}
@@ -125,8 +126,8 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// TODO Auto-generated method stub
 		switch (item.getItemId()) {
-		case android.R.id.home:
-			closeApp();
+			case android.R.id.home:
+				closeApp();
 		}
 		return super.onOptionsItemSelected(item);
 	}
